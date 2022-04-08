@@ -2,10 +2,9 @@ package com.khakimova.easy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
@@ -30,26 +29,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FindIntersection {
 
     private String findIntersection(String[] strArr) {
-        String intersection = "";
+        Set<String> set = new HashSet(Arrays.asList(strArr[0].split(", ")));
+        List<String> list = Arrays.asList(strArr[1].split(", "));
+        List<String> intersection = new ArrayList<>();
 
-        Integer[] numbers1 = convertToArrayOfInteger(strArr[0]);
-        Integer[] numbers2 = convertToArrayOfInteger(strArr[1]);
-
-        int j = 0;
-        for (Integer number : numbers1) {
-            while (j < numbers2.length && number >= numbers2[j]) {
-                if (Objects.equals(number, numbers2[j])) {
-                    intersection = String.format("%s%d,", intersection, number);
-                }
-                j++;
+        for(String s : list) {
+            if(set.contains(s)) {
+                intersection.add(s);
             }
         }
 
-        if(intersection.isBlank()) {
+        if(intersection.isEmpty()) {
             return "false";
         }
 
-        return intersection.substring(0, intersection.length()-1);
+        return String.join(",", intersection);
     }
 
     private String findIntersection2(String[] strArr) {
@@ -65,19 +59,19 @@ public class FindIntersection {
         if(intersection.isEmpty()) {
             return "false";
         }
-        return intersection.stream().collect(Collectors.joining(","));
+        return String.join(",", intersection);
     }
 
-    private Integer[] convertToArrayOfInteger(String str) {
-        String[] strings = str.split(", ");
-        Integer[] numbers = new Integer[strings.length];
-
-        for(int i=0; i < strings.length; i++) {
-            numbers[i] = Integer.parseInt(strings[i]);
-        }
-
-        return numbers;
-    }
+//    private Integer[] convertToArrayOfInteger(String str) {
+//        String[] strings = str.split(", ");
+//        Integer[] numbers = new Integer[strings.length];
+//
+//        for(int i=0; i < strings.length; i++) {
+//            numbers[i] = Integer.parseInt(strings[i]);
+//        }
+//
+//        return numbers;
+//    }
 
     @Test
     public void findIntersectionTest() {
