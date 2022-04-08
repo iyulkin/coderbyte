@@ -88,6 +88,8 @@ public class TreeConstructor {
     @Test
     public void treeConstructorTest() {
         assertTrue(treeConstructor(new String[] {"(1,2)", "(2,4)", "(5,7)", "(7,2)", "(9,5)"}));
+        assertTrue(treeConstructor(new String[] {"(2,3)", "(1,2)", "(4,9)", "(9,3)", "(12,9)", "(6,4)"}));
         assertFalse(treeConstructor(new String[] {"(1,2)", "(3,2)", "(2,12)", "(5,2)"}));
+        assertFalse(treeConstructor(new String[] {"(2,3)", "(1,2)", "(4,9)", "(9,3)", "(12,9)", "(6,4)", "(1,9)"}));
     }
 }
