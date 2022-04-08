@@ -62,5 +62,7 @@ public class MinWindowSubstring {
     public void minWindowSubstringTest() {
         assertEquals("aksfaje", minWindowSubstring(new String[] {"ahffaksfajeeubsne", "jefaa"}));
         assertEquals("affhkkse", minWindowSubstring(new String[] {"aaffhkksemckelloe", "fhea"}));
+        assertEquals("fafe", minWindowSubstring(new String[] {"aaffsfsfasfasfasfasfasfacasfafe", "fafe"}));
+        assertEquals("caae", minWindowSubstring(new String[] {"caae", "cae"}));
     }
 }
